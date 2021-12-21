@@ -23,7 +23,11 @@ const Category = () => {
         <h1 style={{textAlign: "center"}}>READING LIST</h1>
         <ul className="mt-5 text-center">
             {categories.map(category => (
-                <button>{category.description}</button>
+                <button
+                    onClick={() => {
+                        // display list of authors for respective category
+                    }}    
+                >{category.description}</button>
             ))}                
         </ul>        
     </Fragment>
