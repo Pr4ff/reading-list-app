@@ -11,14 +11,11 @@ CREATE TABLE author (
 );
 
 CREATE TABLE book (
-    id BIGSERIAL NOT NULL PRIMARY KEY,
-    author_id BIGINT NOT NULL REFERENCES author(id),
+    id BIGSERIAL NOT NULL PRIMARY KEY,    
     title VARCHAR(100) NOT NULL    
 );
 
---> TABLE DROPPED, need to re-create
-CREATE TABLE category_author (
-    id BIGSERIAL NOT NULL PRIMARY KEY,
+CREATE TABLE category_author (    
     category_id BIGSERIAL,
     author_id BIGSERIAL,    
     PRIMARY KEY (category_id, author_id),
@@ -26,6 +23,20 @@ CREATE TABLE category_author (
     CONSTRAINT fk_author FOREIGN KEY(author_id) REFERENCES author(id)
 );
 
-INSERT INTO author (name) VALUES ('Mircea Eliade');
+CREATE TABLE author_book (    
+    author_id BIGSERIAL,
+    book_id BIGSERIAL,    
+    PRIMARY KEY (author_id, book_id),    
+    CONSTRAINT fk_author FOREIGN KEY(author_id) REFERENCES author(id), 
+    CONSTRAINT fk_book FOREIGN KEY(book_id) REFERENCES book(id)
+);
 
-INSERT INTO book (author_id, title) VALUES (1 ,'Istoria Religiilor');
+INSERT INTO category (description) VALUES ("Philosophy");
+
+INSERT INTO author (name) VALUES ("Yukio Mishima");
+
+INSERT INTO book (title) VALUES ("Sun and Steel");
+
+INSERT INTO category_author (category_id, author_id) VALUES (2, 1);
+
+INSERT INTO author_book (author_id, book_id) VALUES (1, 2);
