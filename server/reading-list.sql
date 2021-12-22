@@ -31,11 +31,11 @@ CREATE TABLE author_book (
     CONSTRAINT fk_book FOREIGN KEY(book_id) REFERENCES book(id)
 );
 
-INSERT INTO category (description) VALUES ("Philosophy");
+INSERT INTO category (description) VALUES ('Philosophy');
 
-INSERT INTO author (name) VALUES ("Yukio Mishima");
+INSERT INTO author (name) VALUES ('Yukio Mishima');
 
-INSERT INTO book (title) VALUES ("Sun and Steel");
+INSERT INTO book (title) VALUES ('Sun and Steel');
 
 INSERT INTO category_author (category_id, author_id) VALUES (2, 1);
 
